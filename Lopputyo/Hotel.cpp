@@ -1,6 +1,5 @@
-/* Sara Hautamäki, Lopputyö
-Yritän 2-3 pisteen ohjelmaa 
-Todellinen tavoite on läpäistä kurssi */
+/* Sara Hautamäki, Harjoitustyö
+Yritän 2-3 pisteen ohjelmaa  */
 
 
 #include <iostream>
@@ -77,10 +76,23 @@ int main() {
 		int tyhjatAlkiot = kaikkiHuoneet - huoneetTaulukko.size();
 
 		cout << "\nHuoneenne numero on: " << huoneNro << "\n\n" << "Tyhjiä huoneita on jäljellä " << tyhjatAlkiot << " kappaletta\n";
-		cout << "Haluatko varata lisää huoneita? (Kyllä/Ei): ";
-		cin >> varataan;
+	
+		// Haluaako käyttäjä lisää huoneita. Syötteen tarkistus jälleen löydetty netistä keskustelupalstalta
+		while (true) {
+			cout << "Haluatko varata lisää huoneita? ( K / E ): ";
+			cin >> varataan;
 
-		if (varataan != "Kyllä" && varataan != "kyllä")
+			for (char& c : varataan) c = tolower(c);
+			if (varataan == "k" || varataan == "e") {
+				break;
+			}
+			else {
+				cout << "Vastus väärässä muodossa\n";
+			}
+			
+		}
+
+		if (varataan != "k")
 			break;
 	}
 
