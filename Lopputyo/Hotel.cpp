@@ -8,6 +8,7 @@ Todellinen tavoite on läpäistä kurssi */
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -35,21 +36,20 @@ int main() {
 
 	int kaikkiHuoneet;		// Arvottujen huoneiden määrä väliltä 30-70
 	int hintaPerYo;			// Arvottu yön hinta 80-100 e väliltä
-	int huoneNumero;		// Arvottu vapaan huoneen numero
 	int huoneidenMaara;		// Kuinka monta huonetta varaaja haluaa
 	int vierailunKesto;		// Kuinka monta yötä vierailu kestää
 	int lasku;				// Huoneiden määrä * öiden määrä * yön hinta
 	string varaajanNimi;	// Millä nimellä varaus tehdään
-	int huoneNro;
+	int huoneNro;			// Huoneen arrvottu numero
 	string varataan;
 
 
 
 	// Arvotaan huoneiden lukumäärä 30-70 väliltä
-	// Käytetään kyseistä lukua kun määritellään huoneetTaulukko-vektorin koko
 	srand(time(0));
 	kaikkiHuoneet = 30 + (rand() % 41);
 	
+	// Luodaan vektori, johon aliohjelmassa laitetaan huoneen numerot
 	vector<int>huoneetTaulukko;
 
 	// Menu
@@ -58,7 +58,7 @@ int main() {
 	cout << "Hotellissa on " << kaikkiHuoneet << " huonetta\n\n";
 
 	cout << "Millä nimellä varaus tehdään: ";
-	cin >> varaajanNimi;
+	 getline(cin, varaajanNimi);
 	
 	cout << "Kuinka monta yötä haluatte viipyä: ";
 	//virheen tarkistus, idea kopioitu w3school "c++ input validation" toteutuksesta
@@ -80,12 +80,12 @@ int main() {
 		cout << "Haluatko varata lisää huoneita? (Kyllä/Ei): ";
 		cin >> varataan;
 
-		if (varataan != "k" && varataan != "K" && varataan != "Kyllä" && varataan != "kyllä")
+		if (varataan != "Kyllä" && varataan != "kyllä")
 			break;
 	}
 
-
-	cout << "\n\nVaraus on tehty nimellä: " << varaajanNimi << "\n"
+	// Loppukoonti varauksesta
+	cout << "\n\nVaraajan nimi: " << varaajanNimi << "\n"
 		<< "Olet varannut huoneet: ";
 	for (int huoneet : huoneetTaulukko)
 		cout << huoneet << " ";
